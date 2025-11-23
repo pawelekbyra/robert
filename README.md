@@ -35,7 +35,7 @@ System, który budujesz, musi opierać się na:
 * **Framework:** Next.js 14+ (App Router) – dla łatwej strukturyzacji.
 * **Język:** TypeScript – dla bezpieczeństwa typów (unikaj błędów `any`).
 * **Baza Danych:** PostgreSQL + Prisma ORM – łatwe migracje sterowane przez AI.
-* **AI Engine:** OpenAI SDK (`gpt-4o`) – Twój mózg.
+* **AI Engine:** Google Gemini (`gemini-1.5-flash`) – Twój mózg (wymaga `GOOGLE_GENERATIVE_AI_API_KEY`).
 * **Manipulacja Kodem:** `@octokit/rest` – Twoje ręce (do edycji plików na GitHubie).
 * **UI:** Tailwind CSS + Shadcn UI – interfejs dla Właściciela.
 
@@ -49,12 +49,12 @@ Jeśli czytasz ten plik i repozytorium jest puste (zawiera tylko README), Twoim 
 
 1.  **Zainicjuj Projekt:**
     * Utwórz strukturę Next.js.
-    * Skonfiguruj `package.json` (dodaj: `openai`, `octokit`, `prisma`, `@prisma/client`, `ai`).
+    * Skonfiguruj `package.json` (dodaj: `google`, `octokit`, `prisma`, `@prisma/client`, `ai`).
 
 2.  **Zbuduj "Ręce" (Agent API):**
     * Stwórz endpoint `/api/agent/evolve`.
     * Ten endpoint ma przyjmować prompt (np. "Zmień kolor tła", "Dodaj moduł bloga").
-    * Ma on używać GPT-4o do wygenerowania kodu.
+    * Ma on używać Gemini do wygenerowania kodu.
     * Ma on używać Octokit do fizycznego zapisania pliku w repozytorium (commit).
 
 3.  **Zbuduj "Oczy" (Log Viewer):**

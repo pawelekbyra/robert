@@ -4,7 +4,14 @@ import { useState } from "react";
 import { useChat } from "@ai-sdk/react";
 
 export default function Home() {
-  const { messages, sendMessage, status } = useChat();
+  const { messages, sendMessage, status, error } = useChat({
+    onFinish: (message) => {
+        console.log("Chat finished:", message);
+    },
+    onError: (err) => {
+        console.error("Chat error:", err);
+    }
+  });
   const [input, setInput] = useState("");
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -34,6 +41,9 @@ export default function Home() {
             {m.content}
           </div>
         ))}
+        {error && (
+            <div className="text-red-500">Error: {error.message}</div>
+        )}
       </div>
 
       <form onSubmit={handleSubmit} className="flex">
